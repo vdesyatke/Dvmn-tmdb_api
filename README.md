@@ -97,5 +97,3 @@ Sonntag im August
 The Dark
 Varjoja paratiisissa
 ```
-
-## Вспомогательные скрипты
