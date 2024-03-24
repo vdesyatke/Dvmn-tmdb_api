@@ -15,7 +15,7 @@ python3 hello_api_TMBD.py
 
 Успешный запуск:
 ```python
->>> python hello_api_TMDB.py                                                 
+>>> python3 hello_api_TMDB.py                                                 
 Enter your api key v3:                                                                                                           
 4000000
 ```
@@ -29,7 +29,7 @@ Enter your api key v3:
 
 #### Запуск скрипта
 ```python
-python3 make_own_db.py
+>>> python3 make_own_db.py
 ```
 
 После запуска скрипт предложит ввести ключ API.
@@ -37,18 +37,12 @@ python3 make_own_db.py
 
 Успешный запуск:
 ```python
->>> python make_own_db.py
+>>> python3 make_own_db.py
 Enter your api key v3:
 please, wait, this operation may take smth like 15-20 minutes
 0.0 percent complete
 10.0 percent complete
-20.0 percent complete
-30.0 percent complete
-40.0 percent complete
-50.0 percent complete
-60.0 percent complete
-70.0 percent complete
-80.0 percent complete
+<...>
 90.0 percent complete
 ```
 
@@ -56,12 +50,18 @@ please, wait, this operation may take smth like 15-20 minutes
 Ключ API можно получить [здесь](https://www.themoviedb.org/settings/api). 
 
 ### search_in_db
-Просит пользователя ввести путь к базе данных, затем ключевое слово (фразу) из названия фильма, который хочет найти пользователь. Ищет без учёта регистра. 
-
+#### Описание
 Выдает отсортированный по алфавиту список названий найденных фильмов.
 
+Просит пользователя ввести путь к базе данных, затем ключевое слово (фразу) из названия фильма, который хочет найти пользователь. Ищет без учёта регистра. 
+
+#### Запуск скрипта
 ```python
-> python search_in_db.py
+>>> python3 search_in_db.py
+```
+#### Успешный запуск
+```python
+>>> python3 search_in_db.py
 Enter path to DataBase:MyFilmDB.json
 Enter film to search for:ari
 Ariel
@@ -70,12 +70,32 @@ Pirates of the Caribbean: The Curse of the Black Pearl
 ```
 
 ### find_similar
-Просит пользователя ввести путь к базе данных, затем ключевое слово (фразу), которая является точным названием фильма.
+#### Описание
+Находит в базе данных и возвращает отсортированный по названию список фильмов, похожих на заданный пользователем фильм, по параметрам: принадлежность к коллекции, оригинальный язык фильма, бюджет, жанр. Просит пользователя ввести путь к базе данных, затем ключевое слово (фразу), которая является точным названием фильма.
 
-Находит в базе данных и возвращает отсортированный по названию список фильмов, похожих на заданный пользователем фильм, по параметрам: принадлежность к коллекции, оригинальный язык фильма, бюджет, жанр.
+Параметрам дан разный "вес": принадлежность к коллекции - 1000, оригинальный язык фильма - 300, бюджет - 100, жанр - 500. При совпадении параметра похожего фильма с параметром фильма, заданного пользоавателем, вес "похожести" увеличивается на "вес" этого параметра. Суммарный вес совпавших параметров - это рейтинг похожести фильма.
 
+Из списка наиболее похожих фильмов удаляется сам фильм, заданный пользователем (совпадающий сам с собой), затем по весу выбираются наиболее похожие фильмы, и их отсортированный список возвращается пользователю. Список фильмов ограничен восемью фильмами.
 
+#### Запуск скрипта
+```python
+>>> python3 find_similar.py
+```
 
-
+#### Успешный запуск
+```python
+>>> python3 find_similar.py
+Enter path to DataBase:MyFilmDB.json
+Enter film to search for:Ariel
+Four Rooms
+Hable con ella
+Judgment Night
+Kunstgriff
+Las Hurdes
+Megacities
+Sonntag im August
+The Dark
+Varjoja paratiisissa
+```
 
 ## Вспомогательные скрипты
